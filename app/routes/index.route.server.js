@@ -6,7 +6,7 @@ import { helloWorld } from '../controllers/index.controller.server.js';
 const router = Router();
 
 // Middleware to connect application
-router.use('/', helloWorld);
-router.use('/hello', helloWorld);
+router.get('/', helloWorld);
+router.get('/hello', helloWorld);
 
 export default router;

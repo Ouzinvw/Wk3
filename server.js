@@ -1,23 +1,32 @@
-// import third-party nodejs module Connect
-const connect = require('connect');
+// Third party modules
+import express from "express";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import session from "express-session";
+import bodyParser from "body-parser";
+
+// ES Modules - Fix for _dirname
+import path, { dirname } from 'path';
+import { fileURLToPath } from "url";
+const _dirname = dirname(fileURLToPath(import.meta.url));
 
 // instantiate app-server
-const app = connect();
+const app = express();
 
 // custom middleware
-function helloWorld(req, res, next){
-    res.setHeader('Content-Type','text/plain');
+function helloWorld(req, res, next) {
+    res.setHeader('Content-Type', 'text/plain');
     res.end('Hello World');
 };
 
 // custom middleware
-function byeWorld(req, res, next){
-    res.setHeader('Content-Type','text/plain');
+function byeWorld(req, res, next) {
+    res.setHeader('Content-Type', 'text/plain');
     res.end('Good Bye World');
 };
 
 // add middleware to connect application
-app.use('/hello',helloWorld);
+app.use('/hello', helloWorld);
 app.use('/bye', byeWorld);
 
 // run app
